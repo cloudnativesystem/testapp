@@ -23,7 +23,7 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           owner: 'cloudnativesystem'
           repo: testapp
-          name: 'v*'
+          name: '/^v*'
           sort: 'id'
           slice: 'last'
 
