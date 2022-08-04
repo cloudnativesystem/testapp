@@ -18,15 +18,11 @@ jobs:
     steps:
       - name: Retriving Last Release
         id: releases
-        uses: ptomulik/github-list-releases-action@v0
+        uses: pozetroninc/github-action-get-latest-release@master
         with:
-          token: ${{ secrets.GH_PAT }}
-          owner: 'cloudnativesystem'
-          repo: testapp
-          name: '/^v*'
-          sort: 'id'
-          slice: 'last'
+          repository: "cloudnativesystem/testapp"
+          excludes: "prerelease, draft"
 
       - name: Display Results
-        run: echo "${{ steps.releases.outputs.json }}"
+        run: echo "${{ steps.releases.outputs.release }}"
         #run: echo "${{ github.event.inputs.environment }}"
