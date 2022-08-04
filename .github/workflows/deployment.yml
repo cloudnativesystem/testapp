@@ -28,4 +28,5 @@ jobs:
           slice: 'last'
 
       - name: Display Results
-        run: echo "${{ github.event.inputs.environment }}" $"{{ steps.releases.outputs.json }}"
+        run: echo "${{ steps.releases.outputs.json }}"
+        #run: echo "${{ github.event.inputs.environment }}"
