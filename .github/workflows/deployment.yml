@@ -16,5 +16,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Retriving Last Release
+        id: releases
+        uses: ptomulik/github-list-releases-action@v0
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repo: testapp
+          name: 'v*'
+          sort: 'id'
+          slice: 'last'
+
       - name: Display Results
-        run: echo "${{ github.event.inputs.environment }}"
+        run: echo "${{ github.event.inputs.environment }}" $"{{ steps.releases.outputs.json }}"
