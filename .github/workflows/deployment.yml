@@ -1,0 +1,20 @@
+---
+name: "deployment"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Select Environment
+        options:
+        - staging
+        - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Results
+        run: echo "${{ github.event.inputs.environment }}"
